@@ -13,7 +13,7 @@ from nltk.tag import pos_tag
 from nltk.corpus import brown
 from nltk.corpus import stopwords
 
-text = "Do you know how NLTK works? It's actually quite interesting. Let's try something in this lecture. My name is Jitesh Pubreja and I'll be delivering this lecture."
+text = "Do you know how NLTK works? It's actually quite interesting. Let's try something in this lecture. My name is Jitesh Pubreja and I'll be delivering this lecture today."
 words = ["writing","working","calves","wolves","branded","horse","randomize","possibly","provision","hospital","scratchy","kindness","Jitesh","Pubreja"]
 
 
@@ -26,14 +26,13 @@ def chunker(input_words,n):
     output = []
 
     current_chunk = []
-    count = 0
-    for w in words:
+    for i,w in enumerate(words):
         current_chunk.append(w)
-        count = count + 1
-        if(count == n):
+        if (i + 1) % n == 0:
             output.append(current_chunk)
             current_chunk = []
-            count = 0
+        elif i + 1 == len(words):
+            output.append(current_chunk)
     return output
 
 
